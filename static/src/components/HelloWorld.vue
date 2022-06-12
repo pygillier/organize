@@ -1,41 +1,15 @@
 <script setup>
-import { ref } from 'vue'
-
-defineProps({
-  msg: String
-})
-
-const count = ref(0)
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
-  <ui-icon>library_add_check</ui-icon>
+  <ui-list :type="2">
+  <ui-item v-for="i in 3" :key="i">
+    <ui-item-text-content>
+      <ui-item-text1>Line item</ui-item-text1>
+      <ui-item-text2>Secondary text</ui-item-text2>
+    </ui-item-text-content>
+  </ui-item>
+</ui-list>
+  <ui-fab> <ui-icon :class="iconClass">add</ui-icon></ui-fab>
 
-  <p>
-    Recommended IDE setup:
-    <a href="https://code.visualstudio.com/" target="_blank">VS Code</a>
-    +
-    <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
-  </p>
-
-  <p>
-    <a href="https://vitejs.dev/guide/features.html" target="_blank">
-      Vite Documentation
-    </a>
-    |
-    <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Documentation</a>
-  </p>
-
-  <button type="button" @click="count++">count is: {{ count }}</button>
-  <p>
-    Edit
-    <code>components/HelloWorld.vue</code> to test hot module replacement.
-  </p>
 </template>
-
-<style scoped>
-a {
-  color: #42b983;
-}
-</style>

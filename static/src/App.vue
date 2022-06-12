@@ -5,19 +5,62 @@ import HelloWorld from './components/HelloWorld.vue';
 </script>
 
 <template>
-  <ui-top-app-bar><!-- the application title --></ui-top-app-bar>
-  <ui-drawer>
-  <ui-drawer-header>
-    <ui-drawer-title>Title</ui-drawer-title>
-    <ui-drawer-subtitle>Subtitle</ui-drawer-subtitle>
-  </ui-drawer-header>
-  <ui-drawer-content>
-    <ui-nav>
-      <ui-nav-item active>Activated link</ui-nav-item>
-      <ui-nav-item>Unactivated link</ui-nav-item>
-    </ui-nav>
-  </ui-drawer-content>
-</ui-drawer>
-  <img alt="Vue logo" src="assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + Vite" />
+<div class="page--top-app-bar">
+  <ui-top-app-bar
+    content-selector="#content-main"
+    :type="type"
+    :title="title"
+    @nav="openDrawer = true"
+  >
+    <template #toolbar="{ toolbarItemClass }">
+      <ui-icon-button
+        :class="toolbarItemClass"
+        icon="file_download"
+      ></ui-icon-button>
+      <ui-icon-button :class="toolbarItemClass" icon="print"></ui-icon-button>
+      <ui-icon-button
+        :class="toolbarItemClass"
+        icon="bookmark"
+      ></ui-icon-button>
+    </template>
+  </ui-top-app-bar>
+
+  <ui-drawer v-model="openDrawer" type="modal">
+    <ui-drawer-header>
+      <ui-drawer-title>Header here</ui-drawer-title>
+    </ui-drawer-header>
+    <ui-drawer-content>
+      <ui-list>
+        <ui-item active>
+          <ui-item-first-content>
+            <ui-icon>arrow_back</ui-icon>
+          </ui-item-first-content>
+          <ui-item-text-content>Back</ui-item-text-content>
+        </ui-item>
+        <ui-list-divider></ui-list-divider>
+      </ui-list>
+    </ui-drawer-content>
+  </ui-drawer>
+  <div id="content-main">
+    <ui-grid class="demo-grid">
+  <ui-grid-cell class="demo-cell" columns="2">6</ui-grid-cell>
+  <ui-grid-cell class="demo-cell" columns="8"><HelloWorld/></ui-grid-cell>
+  <ui-grid-cell class="demo-cell" columns="2">2</ui-grid-cell>
+</ui-grid>
+  </div>
+</div>
+
 </template>
+
+<script>
+export default {
+  title: "Organize, GTD for fummies",
+  data() {
+    return {
+      type: 0,
+      title: 'Organize',
+      openDrawer: false
+    };
+  }
+};
+</script>

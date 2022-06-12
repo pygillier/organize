@@ -2,6 +2,9 @@ import { createApp } from 'vue'
 import BalmUI from 'balm-ui'; // Official Google Material Components
 import BalmUIPlus from 'balm-ui-plus'; // BalmJS Team Material Components
 import 'balm-ui-css';
+import { createPinia } from 'pinia'
+
+import titleMixin from './mixins/titleMixin'
 
 import App from './App.vue'
 
@@ -16,5 +19,7 @@ app.use(BalmUI, {
   }
 });
 app.use(BalmUIPlus);
+app.use(createPinia());
+app.mixin(titleMixin);
 
 app.mount('#app');
