@@ -1,6 +1,4 @@
 <script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import HelloWorld from './components/HelloWorld.vue';
 </script>
 
@@ -43,7 +41,7 @@ import HelloWorld from './components/HelloWorld.vue';
   </ui-drawer>
   <div id="content-main">
     <ui-grid class="demo-grid">
-  <ui-grid-cell class="demo-cell" columns="2">6</ui-grid-cell>
+  <ui-grid-cell class="demo-cell" columns="2">{{ user ? 'Hello' : 'Bye' }}</ui-grid-cell>
   <ui-grid-cell class="demo-cell" columns="8"><HelloWorld/></ui-grid-cell>
   <ui-grid-cell class="demo-cell" columns="2">2</ui-grid-cell>
 </ui-grid>
@@ -53,14 +51,27 @@ import HelloWorld from './components/HelloWorld.vue';
 </template>
 
 <script>
+import {useUserStore} from "./stores/user";
+
 export default {
-  title: "Organize, GTD for fummies",
+  title: "Organize, GTD for dummies",
+  setup() {
+    const userStore = useUserStore()
+
+    return {
+      isLoggedIn: userStore.$state.isLoggedIn
+    }
+  },
   data() {
     return {
       type: 0,
       title: 'Organize',
-      openDrawer: false
+      openDrawer: false,
+      user: this.user
     };
+  },
+  mounted() {
+    console.log(this.title)
   }
 };
 </script>
