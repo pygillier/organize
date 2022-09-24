@@ -19,3 +19,15 @@ psycopg2-binary = "^2.9.3"
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 88
+default_section = "THIRDPARTY"
+known_first_party = ["api", "tasks", "links"]
+known_third_party = ["django", "environ", "rest_framework", "rest_framework_simplejwt"]
+
+[tool.black]
+line-length = 88
+include = '\.pyi?$'
