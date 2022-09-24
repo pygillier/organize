@@ -7,6 +7,10 @@ authors = ["Pierre-Yves Gillier <github@pygillier.me>"]
 [tool.poetry.dependencies]
 python = "^3.10"
 Django = "^4.1.1"
+djangorestframework = "^3.14.0"
+django-cors-headers = "^3.13.0"
+djangorestframework-simplejwt = "^5.2.0"
+PyJWT = "^2.5.0"
 
 [tool.poetry.dev-dependencies]
 
